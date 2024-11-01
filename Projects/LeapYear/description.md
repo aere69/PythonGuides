@@ -15,4 +15,3 @@ This is how you work out whether if a particular year is a leap year.
 - unless the year is also divisible by 400 with no remainder.
 
 i.e. 2000 is a Leap year, 2100 is not a Leap year
-
