@@ -10,6 +10,10 @@ def check_answer(celeb_A, celeb_B, guess):
         return "A" == guess
     else:
         return "B" == guess
+    
+def format_celebrity_print(celeb, position):
+    return f"Compare {position}: {celeb["name"]}, a {celeb["description"]}, from {celeb["country"]}"
+
 
 def game():
     game_over = False
@@ -29,7 +33,7 @@ def game():
         if score != 0:
             print(f"Correct!!!. Current Score : {score}\n")
 
-        print(f"Compare A: {celebrity1["name"]}, a {celebrity1["description"]}, from {celebrity1["country"]}")
+        print(format_celebrity_print(celebrity1,"A"))
         
         print(vs)
         
@@ -38,7 +42,7 @@ def game():
         while celebrity1 == celebrity2:
             celebrity2 = select_celebrity()    
 
-        print(f"Against B: {celebrity2["name"]}, a {celebrity2["description"]}, from {celebrity2["country"]}")
+        print(format_celebrity_print(celebrity2,"B"))
 
         answer = input("\nWho has more followers, \'A\' or \'B\'? ").upper()
 
