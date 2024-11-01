@@ -1,37 +1,51 @@
 import random
 from art import logo
 
-print(logo)
-print("Welcome to the number guessing game.")
-print("I am thinking of a number between 1 and 100")
-dificulty = input("Choose a dificulty. Type \'easy\' or \'hard':").lower()
-game_over = False
+# Define global constants
+EASY_LEVEL_TURNS = 10
+HARD_LEVEL_TURNS = 5
 
-number = random.randint(1,100)
-
-if dificulty == "easy":
-    attempts = 10
-else:
-    attempts = 5
-
-while not game_over:
-    print(f"You have {attempts} attempts remaining to guess the number.")
-    guess = int(input("Make a guess: "))
-    if guess == number:
-        game_over = True
+def set_difficulty():
+    difficulty = input("Choose a difficulty. Type \'easy\' or \'hard':").lower()
+    if difficulty == "easy":
+        return EASY_LEVEL_TURNS
     else:
-        if guess < number:
+        return HARD_LEVEL_TURNS
+
+def check_answer(user_guess, correct_answer, turns):
+    if user_guess == correct_answer:
+        print("You guessed it right. You WIN!")
+        return -1
+    else:
+        if user_guess < correct_answer:
             print("Too low")
         else:
             print("Too High")
-        attempts -= 1
+        return turns - 1
 
-        if attempts == 0:
-            game_over = True
+def game():
+    print(logo)
+    print("Welcome to the number guessing game.")
+    print("I am thinking of a number between 1 and 100")
+    number = random.randint(1,100)
+    number = 5
+
+    attempts = set_difficulty()
+
+    game_over = False
+
+    while not game_over:
+        print(f"You have {attempts} attempts remaining to guess the number.")
+        guess = int(input("Make a guess: "))
+
+        attempts = check_answer(guess,number,attempts)
+
+        if attempts > 0:
+            print("Guess Again.")
         else:
-            print("Guess again.")
+            game_over=True
 
-if attempts > 0:
-    print("You guessed it right. You WIN!")
-else:
-    print(f"The number was {number} You LOST!.")
+            if attempts == 0:
+                print(f"The number was {number} You LOST!.")
+
+game()
