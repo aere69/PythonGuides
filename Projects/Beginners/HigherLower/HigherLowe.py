@@ -22,6 +22,8 @@ def game():
     celebrity1 = select_celebrity()
 
     while not game_over:
+        # Clear the screen
+        print("\n" * 20)
         print(logo)
         
         if score != 0:
@@ -32,6 +34,10 @@ def game():
         print(vs)
         
         celebrity2 = select_celebrity()    
+
+        while celebrity1 == celebrity2:
+            celebrity2 = select_celebrity()    
+
         print(f"Against B: {celebrity2["name"]}, a {celebrity2["description"]}, from {celebrity2["country"]}")
 
         answer = input("\nWho has more followers, \'A\' or \'B\'? ").upper()
@@ -42,6 +48,8 @@ def game():
         else:
             game_over = True
 
+    # Clear the screen
+    print("\n" * 20)
     print(logo)
     print(f"You Lost. Your final Score : {score}\n")
 
