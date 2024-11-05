@@ -1,6 +1,10 @@
+# ----------------  CONSTANT DEFINITIONS -------------------------------
+
 PLACEHOLDER = "[name]"
 PATH_TO_PROJECT = "./Projects/Intermediate/SimpleMailMerge"
 filename = PATH_TO_PROJECT + "/Input/Names/invited_names.txt"
+
+# ---------------- FUNCTION DEFINITIONS --------------------------------
 
 def clean_name(name):
     clean_name = name.strip()
@@ -19,13 +23,18 @@ def create_invitation(to, document):
     with open(filename, "w") as file:
         file.write(doc)
 
+# ------------------- MAIN CODE --------------------------------
+
 try:
-    f = open(filename, "r")
+    # f = open(filename, "r")
+    with open(filename) as file:
+        f = file.readlines()
+    
     template = load_doc_template(PATH_TO_PROJECT+"/Input/Letters/starting_letter.txt")
 
     for invited_name in f:
         create_invitation(clean_name(invited_name),template)
-        
+
 except FileNotFoundError:
     print(f"Error - File not found.")
     exit()
