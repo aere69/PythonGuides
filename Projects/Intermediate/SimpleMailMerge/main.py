@@ -7,16 +7,19 @@ filename = PATH_TO_PROJECT + "/Input/Names/invited_names.txt"
 # ---------------- FUNCTION DEFINITIONS --------------------------------
 
 def clean_name(name):
+    """Returns a clean name. No leading or trailing spaces or new line"""
     clean_name = name.strip()
     clean_name = clean_name.strip("\n")
     return clean_name
 
 def load_doc_template(file_name):
+    """Returns the content of the file."""
     with open(file_name) as file:
         doc = file.read()
     return doc
 
 def create_invitation(to, document):
+    """Takes a name (to) and a document template and creates a new file with PLACEHODER replaced in the document template"""
     doc = document.replace(PLACEHOLDER, to)
     to = to.replace(" ", "_")
     filename = PATH_TO_PROJECT+"/Output/ReadyToSend/"+to+"_invitation_letter.txt"
