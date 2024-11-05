@@ -1,5 +1,11 @@
+PLACEHOLDER = "[name]"
 PATH_TO_PROJECT = "./Projects/Intermediate/SimpleMailMerge"
 filename = PATH_TO_PROJECT + "/Input/Names/invited_names.txt"
+
+def clean_name(name):
+    clean_name = name.strip()
+    clean_name = clean_name.strip("\n")
+    return clean_name
 
 def load_doc_template(file_name):
     with open(file_name) as file:
@@ -7,7 +13,7 @@ def load_doc_template(file_name):
     return doc
 
 def create_invitation(to, document):
-    doc = document.replace("[name]", to)
+    doc = document.replace(PLACEHOLDER, to)
     to = to.replace(" ", "_")
     filename = PATH_TO_PROJECT+"/Output/ReadyToSend/"+to+"_invitation_letter.txt"
     with open(filename, "w") as file:
@@ -18,8 +24,8 @@ try:
     template = load_doc_template(PATH_TO_PROJECT+"/Input/Letters/starting_letter.txt")
 
     for invited_name in f:
-        invited_name = invited_name.strip("\n")
-        create_invitation(invited_name,template)
+        create_invitation(clean_name(invited_name),template)
+        
 except FileNotFoundError:
     print(f"Error - File not found.")
     exit()
