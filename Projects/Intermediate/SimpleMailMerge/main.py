@@ -23,3 +23,13 @@ try:
 except FileNotFoundError:
     print(f"Error - File not found.")
     exit()
+except:
+    print(f"Something went wrong.")
+    exit()
+else:
+    # There were no exceptions
+    pass
+finally:
+    # This will always happen
+    pass
+
