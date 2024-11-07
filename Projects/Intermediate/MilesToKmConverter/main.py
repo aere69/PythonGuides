@@ -4,6 +4,7 @@ from tkinter import *
 window = Tk()
 window.title("Miles to KM Converter")
 window.minsize(width=100, height=100)
+window.config(padx=10,pady=10)
 
 # Miles Entry
 miles = Entry(width=10)
@@ -27,8 +28,8 @@ km_label.grid(row=2,column=3)
 
 # Calculate Button
 def action():
-    res = float(miles.get())*1.6
-    result.config(text=res)
+    res = float(miles.get())*1.609
+    result.config(text=f"{res}")
 
 button = Button(text="Calculate", command=action)
 button.grid(row=3, column=2)
