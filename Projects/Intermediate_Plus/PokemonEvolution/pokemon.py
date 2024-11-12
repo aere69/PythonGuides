@@ -34,7 +34,6 @@ class Pokemon:
         while idx > 0:
             evolutions[idx-1]["chain"].append(evolutions[idx])
             idx -= 1
-
         return evolutions[0]
     
     def EvolutionNames(self,pokemonName):
