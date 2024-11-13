@@ -1,3 +1,4 @@
+# Libraries: pandas, requests, attrs, pydantic, sortedcollections, sortedcontainers, textdistance, tzdata, jsonschema, jsonlines, arrow, pytest, httpx, aiohttp
 # https://challenges.hackajob.co/pokeapi/docs/v2/#pokemon-species
 
 import requests
