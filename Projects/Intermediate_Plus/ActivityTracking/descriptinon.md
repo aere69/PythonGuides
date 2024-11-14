@@ -1,6 +1,7 @@
 # Activity/Habit Tracking
 
 Use [Pixela](https://pixe.la/) to create an activity/habit tracking app.
+Use Post, Put, Delete and Headers
 
 ## How to use
 
