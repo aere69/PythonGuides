@@ -33,8 +33,13 @@ day_before_yesterday_trade = records[day_before_yesterday]
 day_before_yesterday_closing_price = day_before_yesterday_trade["4. close"]
 
 # Workout the percent difference between closing prices
-difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
-diff_percent = (difference / float(yesterday_closing_price)) * 100
+difference = float(yesterday_closing_price) - float(day_before_yesterday_closing_price)
+up_down = None
+if difference >= 0:
+    up_down = "🔺"
+else:
+    up_down = "🔻"
+diff_percent = round((abs(difference) / float(yesterday_closing_price)) * 100)
 
 # If percentage is greater than 5 then get news
 if diff_percent > 5:
@@ -56,12 +61,15 @@ if diff_percent > 5:
     total_results = request.json()["totalResults"]
 
     message = ""
+    # Option : Slice the articles array to get only the first 3.
+    # first_three_articles = articles[:3]
+    # formatted_articles = [f"{STOCK}: {up_down}{diff_percent}%\nTitle : {article["title"]}\nDesctiption : {article["description"]}\nURL : {article["url"]}\n\n" for article in articles]
     if total_results >= 3:
         for i in range(0,3):
             article = articles[i]
-            message += f"Title : {article["title"]}\nDesctiption : {article["description"]}\nURL : {article["url"]}\n\n"
+            message += f"{STOCK}: {up_down}{diff_percent}%\nTitle : {article["title"]}\nDesctiption : {article["description"]}\nURL : {article["url"]}\n\n"
 
-    print(message)
+    #print(message)
     
     ## Optional use https://www.twilio.com
     # Send a seperate message with the percentage change and each article's title and description to your phone number. 
@@ -74,17 +82,3 @@ if diff_percent > 5:
             to_addrs=SENDER_EMAIL, 
             msg=f"Subject: {COMPANY_NAME} Stock News\n\n{message}"
         )
-
-
-
-#Optional: Format the SMS message or email like this: 
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
-
