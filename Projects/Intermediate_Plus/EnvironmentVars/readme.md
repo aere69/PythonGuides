@@ -43,3 +43,7 @@
 
     DOMAIN = config["DOMAIN"]
     ```
+
+## Sample
+
+[Code Sample](./main.py)
