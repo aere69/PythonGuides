@@ -11,4 +11,4 @@ Python notes, tips and projects
 
 1. [Scripts](./Scripts/readme.md)
 2. [Projects](./Projects/readme.md)
-3. [Data Pipelines - ETL](./Data%20Pipelines/readme.md)
+3. [Data Science](./Data-Science/readme.md)
