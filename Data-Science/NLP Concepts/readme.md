@@ -82,7 +82,7 @@ Lemmatization generally produces more accurate results than stemming, as it keep
 - Lemmatization reduces a word to its lemma by considering its meaning and context—not just by chopping off affixes.
 - WordNetLemmatizer is the NLTK tool commonly used for lemmatization.
 
-[This code](), uses NLTK’s WordNetLemmatizer to lemmatize words from the previously filtered list.
+[This code](lemmatization.py), uses NLTK’s WordNetLemmatizer to lemmatize words from the previously filtered list.
 
 It initializes the WordNetLemmatizer and use its lemmatize() method to process each word in the filtered_words list. We specify pos=’v’ to tell the lemmatizer that we’d like to reduce verbs in the text to their root form. This helps the lemmatizer understand the part of speech and apply the correct lemmatization rule.
 

@@ -29,6 +29,6 @@ Best practices to follow for efficient and reliable ETL pipelines:
 - **Optimize Performance :** Optimize queries and manage memory for large datasets.
 - **Automated Testing :** Test transformations and data formats automatically to ensure accuracy.
 
-# Samples
+## Samples
 
 - [Employee Data ETL Pipeline](./Employee%20Data%20ETL%20Pipeline/readme.md)
